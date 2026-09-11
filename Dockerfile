@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine-amd64 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine-amd64
 
 RUN apk update && apk upgrade \
     && apk add ca-certificates \
@@ -13,10 +13,9 @@ RUN apk update && apk upgrade \
     libmsquic \
     doggo
 
-FROM alpine:latest
-WORKDIR /
+RUN dotnet DnsServerApp.dll
 
-ENTRYPOINT ["/bin/bash", "-c", "./start.sh"]
+ENTRYPOINT ["/bin/sh", "-c", "start.sh"]
 CMD ["/etc/dns"]
 
 EXPOSE \

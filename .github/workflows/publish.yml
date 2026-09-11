@@ -7,16 +7,16 @@ on:
 
 env:
    REGISTRY: ghcr.io
+   REGISTRY_USER_NAME: ${{ github.actor }}
+   REGISTRY_USER_PASSWORD: ${{ github.token }}
    IMAGE_NAME: ${{ github.repository }}         
 
-permissions:
-   contents: read
-   id-token: write
-   packages: write
-
 jobs:
-   docker:
+   build and deploy:
       runs-on: ubuntu-latest
+      permissions:
+          contents: read
+          id-token: write
       steps:
         - name: Checkout
           uses: actions/checkout@v6
