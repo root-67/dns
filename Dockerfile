@@ -16,7 +16,7 @@ RUN apk update && apk upgrade \
 FROM alpine:latest
 WORKDIR /
 
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "./start.sh"]
 CMD ["/etc/dns"]
 
 EXPOSE \
