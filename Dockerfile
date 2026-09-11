@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine-arm64v8 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine-amd64 AS build
 
 RUN apk update && apk upgrade \
     && apk add ca-certificates \
@@ -13,7 +13,7 @@ RUN apk update && apk upgrade \
     libmsquic \
     doggo
 
-FROM alpine:latest
+FROM --platform=linux/amd64 alpine:latest
 WORKDIR /
 
 ENTRYPOINT ["./start.sh"]
