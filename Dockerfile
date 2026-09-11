@@ -17,8 +17,8 @@ RUN apk update && apk upgrade \
 
 WORKDIR /app/opt/technitium/dns
 
-ENTRYPOINT ["/bin/sh/dotnet", "/app/opt/technitium/dns"]
-CMD ["/bin/sh", "-c", "start.sh"]
+ENTRYPOINT ["/bin/sh/dotnet", "/app/opt/technitium/dns/DnsServerApp.dll"]
+CMD ["/app/etc/dns"]
 
 EXPOSE \
    53/udp 53/tcp \
