@@ -37,7 +37,6 @@ jobs:
           uses: docker/metadata-action@v6
           with:
              images: ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}
-             tags: type=semver,pattern={{version}},value=latest
 
         - name: Build and push docker image
           id: push
