@@ -1,5 +1,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine-amd64
 
+WORKDIR /app
+
 RUN apk update && apk upgrade \
     && apk add ca-certificates \
     git \
@@ -13,7 +15,7 @@ RUN apk update && apk upgrade \
     libmsquic \
     doggo
 
-RUN dotnet DnsServerApp.dll
+WORKDIR /app/opt/technitium/dns
 
 ENTRYPOINT ["/bin/sh", "-c", "start.sh"]
 CMD ["/etc/dns"]
