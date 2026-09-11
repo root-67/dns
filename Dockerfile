@@ -13,7 +13,7 @@ RUN apk update && apk upgrade \
     libmsquic \
     doggo
 
-FROM --platform=linux/amd64 alpine:latest
+FROM alpine:amd64
 WORKDIR /
 
 ENTRYPOINT ["./start.sh"]
